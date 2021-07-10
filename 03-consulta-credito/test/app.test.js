@@ -102,4 +102,16 @@ describe('Testes de Integração', () => {
     expect(res.body.erro).toBeDefined()
     expect(res.status).toBe(400)
   })
+
+  test('Lista de todos os clientes cadastrados', async () => {
+    await db.cliente.create(clienteJoao)
+
+    const clientes = await db.cliente.findAll()
+
+    const res = await request(app)
+      .get('/cliente')
+
+    expect(JSON.stringify(res.body)).toEqual(JSON.stringify(clientes))
+    expect(res.status).toBe(200)
+  })
 })

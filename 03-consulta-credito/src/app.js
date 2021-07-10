@@ -38,4 +38,14 @@ app.post('/consulta-credito',
   }
 )
 
+app.get('/cliente', async (req, res) => {
+  try {
+    const clientes = await consultaCliente.listaClientes()
+
+    return res.json(clientes)
+  } catch (erro) {
+    return res.status(400).json({ erro: erro.message })
+  }
+})
+
 module.exports = app

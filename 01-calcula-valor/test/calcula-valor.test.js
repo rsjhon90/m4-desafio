@@ -89,4 +89,31 @@ describe('calcularPrestacoes', () => {
     expect(prestacoes).tenhaSomaDeValoresIgual(montante)
     expect(prestacoes).sejaDecrescente()
   })
+
+  test('Montante deve ser um número maior que 0', () => {
+    const numeroPrestacoes = 3
+    const montante = -200
+
+    const prestacoes = calculaValor.calcularPrestacoes(montante, numeroPrestacoes)
+
+    expect(prestacoes).toEqual([])
+  })
+
+  test('Número de parcelas deve ser um número maior que 0', () => {
+    const numeroPrestacoes = -3
+    const montante = 101.994
+
+    const prestacoes = calculaValor.calcularPrestacoes(montante, numeroPrestacoes)
+
+    expect(prestacoes).toEqual([])
+  })
+
+  test('Número de parcelas deve ser um número inteiro', () => {
+    const numeroPrestacoes = 3.2
+    const montante = 101.994
+
+    const prestacoes = calculaValor.calcularPrestacoes(montante, numeroPrestacoes)
+
+    expect(prestacoes).toEqual([])
+  })
 })

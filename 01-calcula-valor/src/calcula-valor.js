@@ -11,6 +11,13 @@ function arredondar (valor) {
 }
 
 function calcularPrestacoes (montante, numeroParcelas) {
+  if (montante <= 0) {
+    return []
+  }
+  if (numeroParcelas <= 0 || !Number.isInteger(numeroParcelas)) {
+    return []
+  }
+
   const prestacaoBase = arredondar(montante / numeroParcelas)
   const resultado = Array(numeroParcelas).fill(prestacaoBase)
 

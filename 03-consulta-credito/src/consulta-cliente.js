@@ -55,6 +55,11 @@ const consultar = async (nome, CPF, valor, parcelas) => {
   }
 }
 
+const listaClientes = async () => {
+  return await db.cliente.findAll()
+}
+
 module.exports = {
-  consultar
+  consultar,
+  listaClientes
 }
